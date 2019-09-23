@@ -11,6 +11,10 @@ describe("Mars Rover", () => {
     it("it moves 2 spaces", () => {
         expect(rover.execute("MM")).toEqual("0:2:N");
     });
+    
+    it("it wraps around", () => {
+        expect(rover.execute("M".repeat(10))).toEqual("0:0:N");
+    });
 });
 
 function makeRover() {
@@ -23,7 +27,7 @@ function makeRover() {
             return this.finalPos();
         },
         move() {
-            this.y += 1;
+            this.y = (this.y + 1) % 10;
         },
         finalPos: function () {
             return `${this.x}:${this.y}:${this.direction}`;
