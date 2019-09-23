@@ -51,11 +51,21 @@ describe("Mars Rover", () => {
     it("it can turn left and right", () => {
         expect(rover.execute("LR")).toEqual("0:0:N");
     });
+    
+    it("it can move and turn", () => {
+        expect(rover.execute("MMR")).toEqual("0:2:E");
+    });
+    
+    it("it can move and turn and move and turn", () => {
+        expect(rover.execute("MMRMMLM")).toEqual("2:3:N");
+    });
 });
 
 function makeRover() {
-    const directions = ["N", "E", "S", "W"];
-    const directions2 = ["N", "W", "S", "E"];
+    const directions = {
+        "R": ["N", "E", "S", "W"],
+        "L": ["N", "W", "S", "E"]
+    };
     return {
         x: 0,
         y: 0,
@@ -64,17 +74,19 @@ function makeRover() {
             input.split("").forEach((instruction) => this.move(instruction));
             return this.finalPos();
         },
+        rotate: function (instruction) {
+            const index = (directions[instruction].indexOf(this.direction) + 1) % 4;
+            this.direction = directions[instruction][index];
+        },
         move(instruction) {
             if (instruction === "M") {
-                this.y = (this.y + 1) % 10;
-            }
-            if (instruction === "R") {
-                const currentIndex = (directions.indexOf(this.direction) + 1) % 4;
-                this.direction = directions[currentIndex];
-            }
-            if (instruction === "L") {
-                const currentIndex = (directions2.indexOf(this.direction) + 1) % 4;
-                this.direction = directions2[currentIndex];
+                if (this.direction === "E") {
+                    this.x = (this.x + 1) % 10;
+                } else {
+                    this.y = (this.y + 1) % 10;
+                }
+            } else {
+                this.rotate(instruction);
             }
         },
         finalPos: function () {
