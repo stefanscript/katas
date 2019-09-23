@@ -27,6 +27,10 @@ describe("Mars Rover", () => {
     it("it can turn right three times", () => {
         expect(rover.execute("RRR")).toEqual("0:0:W");
     });
+    
+    it("it can turn right 4 times", () => {
+        expect(rover.execute("RRRR")).toEqual("0:0:N");
+    });
 });
 
 function makeRover() {
