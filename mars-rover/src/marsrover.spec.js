@@ -31,6 +31,10 @@ describe("Mars Rover", () => {
     it("it can turn right 4 times", () => {
         expect(rover.execute("RRRR")).toEqual("0:0:N");
     });
+    
+    it("it can turn left", () => {
+        expect(rover.execute("L")).toEqual("0:0:W");
+    });
 });
 
 function makeRover() {
@@ -50,6 +54,9 @@ function makeRover() {
             if (instruction === "R") {
                 const currentIndex = (directions.indexOf(this.direction) + 1) % 4;
                 this.direction = directions[currentIndex];
+            }
+            if (instruction === "L") {
+                this.direction = "W";
             }
         },
         finalPos: function () {
