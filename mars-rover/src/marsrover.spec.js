@@ -56,7 +56,7 @@ describe("Mars Rover", () => {
         expect(rover.execute("MMR")).toEqual("0:2:E");
     });
     
-    it("it can action and turn and action and turn", () => {
+    it("it can move and turn and move and turn", () => {
         expect(rover.execute("MMRMMLM")).toEqual("2:3:N");
     });
     
