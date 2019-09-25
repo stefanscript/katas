@@ -15,6 +15,15 @@ describe("Mars Rover", () => {
     it("it wraps around", () => {
         expect(rover.execute("M".repeat(10))).toEqual("0:0:N");
     });
+    it("it can move come up the other side W", () => {
+        expect(rover.execute("MLM")).toEqual("9:1:W");
+    });
+    it("it can move come up the other side S", () => {
+        expect(rover.execute("RRM")).toEqual("0:9:S");
+    });
+    it("it can move come up the other side E", () => {
+        expect(rover.execute("LM")).toEqual("9:0:W");
+    });
     
     it("it can turn right", () => {
         expect(rover.execute("R")).toEqual("0:0:E");
@@ -80,7 +89,7 @@ function makeRover() {
         },
         action(instruction) {
             if (instruction === "M") {
-                this.move(instruction);
+                this.move();
                 return;
             }
             this.rotate(instruction);
@@ -89,9 +98,9 @@ function makeRover() {
             if (this.direction === "E") {
                 this.x = (this.x + 1) % 10;
             } else if (this.direction === "W") {
-                this.x = (this.x - 1) % 10;
+                this.x = this.x === 0 ? 9 : this.x - 1;
             } else if (this.direction === "S") {
-                this.y = (this.y - 1) % 10;
+                this.y = this.y === 0 ? 9 : this.y - 1;
             } else {
                 this.y = (this.y + 1) % 10;
             }
