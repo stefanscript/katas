@@ -77,5 +77,6 @@ describe("Mars Rover", () => {
     it("it can do complex turns and movements", () => {
         expect(rover.execute("RMMMLMMMMMLLMRM")).toEqual("2:4:W");
     });
+    
 });
 
