@@ -1,11 +1,15 @@
-function makeRover() {
+function makeRover(obtacle) {
     const directions = {
         "R": ["N", "E", "S", "W"],
         "L": ["N", "W", "S", "E"]
     };
+    let stopped = false;
+    
     return {
         x: 0,
         y: 0,
+        px: 0,
+        py: 0,
         direction: "N",
         execute(input) {
             input.split("").forEach((instruction) => this.action(instruction));
@@ -19,6 +23,12 @@ function makeRover() {
             this.rotate(instruction);
         },
         move() {
+            if(obtacle && this.x === obtacle[0] && this.y === obtacle[1]) {
+                stopped = true;
+                return;
+            }
+            this.px = this.x;
+            this.py = this.y;
             if (this.direction === "E") {
                 this.x = (this.x + 1) % 10;
             } else if (this.direction === "W") {
@@ -34,6 +44,9 @@ function makeRover() {
             this.direction = directions[instruction][index];
         },
         finalPosition: function () {
+            if(stopped) {
+                return `o:${this.px}:${this.py}:${this.direction}`;
+            }
             return `${this.x}:${this.y}:${this.direction}`;
         },
     };

@@ -13,4 +13,9 @@ describe("Mars Rover Acceptance", () => {
     it("it wraps around", () => {
         expect(rover.execute("MMMMMMMMMM")).toEqual("0:0:N");
     });
+    
+    it("one obstacle, it stops before", () => {
+        rover = makeRover([0,3]);
+        expect(rover.execute("MMMM")).toEqual("o:0:2:N");
+    });
 });
