@@ -1,8 +1,5 @@
 function makeRover(obtacle) {
-    const directions = {
-        "R": ["N", "E", "S", "W"],
-        "L": ["N", "W", "S", "E"]
-    };
+    const directions = ["N", "E", "S", "W"];
     let stopped = false;
     
     return {
@@ -40,8 +37,9 @@ function makeRover(obtacle) {
             }
         },
         rotate: function (instruction) {
-            const index = (directions[instruction].indexOf(this.direction) + 1) % 4;
-            this.direction = directions[instruction][index];
+            let index = directions.indexOf(this.direction);
+            let newIndex = (instruction === "L" ? index - 1 + 4 : index + 1) % 4;
+            this.direction = directions[newIndex];
         },
         finalPosition: function () {
             if(stopped) {
