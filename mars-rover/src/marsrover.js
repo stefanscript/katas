@@ -57,7 +57,8 @@ function makeRover(obtacle) {
         },
         rotate: function (instruction) {
             let index = directions.indexOf(this.direction);
-            let newIndex = (instruction === "L" ? index - 1 + 4 : index + 1) % 4;
+            const directionsMax = directions.length;
+            let newIndex = (instruction === "L" ? index - 1 + directionsMax : index + 1) % directionsMax;
             this.direction = directions[newIndex];
         },
         finalPosition: function () {
