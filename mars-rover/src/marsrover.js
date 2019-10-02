@@ -2,6 +2,10 @@ function makeRover(obtacle) {
     const directions = ["N", "E", "S", "W"];
     let stopped = false;
     
+    function obstacleAhead(obtacle, x, y) {
+        return obtacle && x === obtacle[0] && y === obtacle[1];
+    }
+    
     return {
         x: 0,
         y: 0,
@@ -20,7 +24,7 @@ function makeRover(obtacle) {
             this.rotate(instruction);
         },
         move() {
-            if(obtacle && this.x === obtacle[0] && this.y === obtacle[1]) {
+            if(obstacleAhead(obtacle, this.x, this.y)) {
                 stopped = true;
                 return;
             }
