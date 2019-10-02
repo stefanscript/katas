@@ -6,6 +6,10 @@ function makeRover(obtacle) {
         return obtacle && x === obtacle[0] && y === obtacle[1];
     }
     
+    function shouldMove(instruction) {
+        return instruction === "M";
+    }
+    
     return {
         x: 0,
         y: 0,
@@ -17,7 +21,7 @@ function makeRover(obtacle) {
             return this.finalPosition();
         },
         action(instruction) {
-            if (instruction === "M") {
+            if (shouldMove(instruction)) {
                 this.move();
                 return;
             }
