@@ -1,5 +1,6 @@
 function makeRover(obtacle) {
     const directions = ["N", "E", "S", "W"];
+    const MAX_GRID = 10;
     let stopped = false;
     
     function obstacleAhead(obtacle, x, y) {
@@ -8,6 +9,14 @@ function makeRover(obtacle) {
     
     function shouldMove(instruction) {
         return instruction === "M";
+    }
+    
+    function moveForward(n) {
+        return (n + 1) % MAX_GRID;
+    }
+    
+    function moveBackwards(n) {
+        return (n - 1 + MAX_GRID) % MAX_GRID;
     }
     
     return {
@@ -32,16 +41,18 @@ function makeRover(obtacle) {
                 stopped = true;
                 return;
             }
+            
             this.px = this.x;
             this.py = this.y;
+            
             if (this.direction === "E") {
-                this.x = (this.x + 1) % 10;
+                this.x = moveForward(this.x);
             } else if (this.direction === "W") {
-                this.x = this.x === 0 ? 9 : this.x - 1;
+                this.x = moveBackwards(this.x);
             } else if (this.direction === "S") {
-                this.y = this.y === 0 ? 9 : this.y - 1;
+                this.y = moveBackwards(this.y);
             } else {
-                this.y = (this.y + 1) % 10;
+                this.y = moveForward(this.y);
             }
         },
         rotate: function (instruction) {
