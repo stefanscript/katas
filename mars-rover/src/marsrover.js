@@ -19,11 +19,12 @@ function makeRover(obtacle) {
         return (n - 1 + MAX_GRID) % MAX_GRID;
     }
     
+    let x = 0;
+    let y = 0;
+    let prevX = 0;
+    let prevY = 0;
+    
     return {
-        x: 0,
-        y: 0,
-        px: 0,
-        py: 0,
         direction: "N",
         execute(input) {
             input.split("").forEach((instruction) => this.action(instruction));
@@ -37,22 +38,22 @@ function makeRover(obtacle) {
             this.rotate(instruction);
         },
         move() {
-            if(obstacleAhead(obtacle, this.x, this.y)) {
+            if(obstacleAhead(obtacle, x, y)) {
                 stopped = true;
                 return;
             }
             
-            this.px = this.x;
-            this.py = this.y;
+            prevX = x;
+            prevY = y;
             
             if (this.direction === "E") {
-                this.x = moveForward(this.x);
+                x = moveForward(x);
             } else if (this.direction === "W") {
-                this.x = moveBackwards(this.x);
+                x = moveBackwards(x);
             } else if (this.direction === "S") {
-                this.y = moveBackwards(this.y);
+                y = moveBackwards(y);
             } else {
-                this.y = moveForward(this.y);
+                y = moveForward(y);
             }
         },
         rotate: function (instruction) {
@@ -63,9 +64,9 @@ function makeRover(obtacle) {
         },
         finalPosition: function () {
             if(stopped) {
-                return `o:${this.px}:${this.py}:${this.direction}`;
+                return `o:${prevX}:${prevY}:${this.direction}`;
             }
-            return `${this.x}:${this.y}:${this.direction}`;
+            return `${x}:${y}:${this.direction}`;
         },
     };
 }
