@@ -38,7 +38,7 @@ function makeRover(obtacle) {
             this.rotate(instruction);
         },
         move() {
-            if(obstacleAhead(obtacle, x, y)) {
+            if (obstacleAhead(obtacle, x, y)) {
                 stopped = true;
                 return;
             }
@@ -48,13 +48,20 @@ function makeRover(obtacle) {
             
             if (this.direction === "E") {
                 x = moveForward(x);
-            } else if (this.direction === "W") {
-                x = moveBackwards(x);
-            } else if (this.direction === "S") {
-                y = moveBackwards(y);
-            } else {
-                y = moveForward(y);
+                return;
             }
+            
+            if (this.direction === "W") {
+                x = moveBackwards(x);
+                return;
+            }
+            
+            if (this.direction === "S") {
+                y = moveBackwards(y);
+                return;
+            }
+            
+            y = moveForward(y);
         },
         rotate: function (instruction) {
             let index = directions.indexOf(this.direction);
@@ -63,7 +70,7 @@ function makeRover(obtacle) {
             this.direction = directions[newIndex];
         },
         finalPosition: function () {
-            if(stopped) {
+            if (stopped) {
                 return `o:${prevX}:${prevY}:${this.direction}`;
             }
             return `${x}:${y}:${this.direction}`;
