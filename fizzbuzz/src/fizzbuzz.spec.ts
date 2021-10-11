@@ -33,12 +33,15 @@ describe("FizzBuzz", () => {
       it("when fizzbuzz 15 it should return fizzbuzz", () => {
           expect(fizzbuzz(15)).toEqual("fizzbuzz");
       });
+      it("when fizzbuzz 30 it should return fizzbuzz", () => {
+          expect(fizzbuzz(30)).toEqual("fizzbuzz");
+      });
     });
 });
 
 
 function fizzbuzz(number: number) {
-    if(number === 15) {
+    if(number % 15 === 0) {
         return "fizzbuzz";
     }
     if(number % 3 === 0) {
