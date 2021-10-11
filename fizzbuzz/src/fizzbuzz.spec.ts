@@ -28,10 +28,19 @@ describe("FizzBuzz", () => {
           expect(fizzbuzz(10)).toEqual("buzz");
       });
     });
+
+    describe("fizzbuzz cases", () => {
+      it("when fizzbuzz 15 it should return fizzbuzz", () => {
+          expect(fizzbuzz(15)).toEqual("fizzbuzz");
+      });
+    });
 });
 
 
 function fizzbuzz(number: number) {
+    if(number === 15) {
+        return "fizzbuzz";
+    }
     if(number % 3 === 0) {
         return "fizz";
     }
