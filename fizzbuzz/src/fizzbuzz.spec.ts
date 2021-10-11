@@ -24,6 +24,9 @@ describe("FizzBuzz", () => {
       it("when fizzbuzz 5 it should return buzz", () => {
           expect(fizzbuzz(5)).toEqual("buzz");
       });
+      it("when fizzbuzz 10 it should return buzz", () => {
+          expect(fizzbuzz(10)).toEqual("buzz");
+      });
     });
 });
 
@@ -32,7 +35,7 @@ function fizzbuzz(number: number) {
     if(number % 3 === 0) {
         return "fizz";
     }
-    if(number === 5) {
+    if(number % 5 === 0) {
         return "buzz";
     }
     return String(number);
