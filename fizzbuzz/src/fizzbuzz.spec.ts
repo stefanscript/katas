@@ -1,3 +1,5 @@
+import {fizzbuzz} from "./fizzbuzz";
+
 describe("FizzBuzz", () => {
     describe("Normal cases", () => {
        it("when fizzbuzz-ing 1 it should return a string representing it", () => {
@@ -40,15 +42,3 @@ describe("FizzBuzz", () => {
 });
 
 
-function fizzbuzz(number: number) {
-    if(number % 15 === 0) {
-        return "fizzbuzz";
-    }
-    if(number % 3 === 0) {
-        return "fizz";
-    }
-    if(number % 5 === 0) {
-        return "buzz";
-    }
-    return String(number);
-}
