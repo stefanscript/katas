@@ -1,8 +1,5 @@
 export function leapyear(number: number): boolean {
-    if(number === 1900) {
-        return false;
-    }
-    if(number === 1800) {
+    if(number % 100 === 0 && number % 400 !== 0) {
         return false;
     }
     if (number % 4 === 0){
