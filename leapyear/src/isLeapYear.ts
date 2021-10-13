@@ -1,8 +1,5 @@
 export function isLeapYear(number: number): boolean {
-    if (!isTypicalLeapYear(number) || isAtypicalCommonYear(number)) {
-        return false;
-    }
-    return true;
+    return isTypicalLeapYear(number) && !isAtypicalCommonYear(number);
 }
 
 function isTypicalLeapYear(number: number) {
