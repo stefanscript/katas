@@ -24,6 +24,10 @@ describe("LeapYear", () => {
     it("1800 is an atypical common year", () => {
        expect(leapyear(1800)).toEqual(false);
     });
+
+    it("2000 is an atypical leap year", () => {
+       expect(leapyear(1800)).toEqual(false);
+    });
 });
 
 
