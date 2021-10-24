@@ -31,4 +31,10 @@ describe("Anagrams", () => {
 
         expect(result.getAll()).toEqual(["aa"])
     });
+
+    it("should return two anagrams for 'ab' input", () => {
+        const result = new Anagrams("ab");
+
+        expect(result.getAll()).toEqual(["ab", "ba"])
+    });
 });
