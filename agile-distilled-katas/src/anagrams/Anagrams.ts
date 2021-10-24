@@ -18,6 +18,15 @@ class Anagrams {
             anagrams.add(`${letters[1]}${letters[0]}`);
         }
 
+        if(letters.length === 3) {
+            anagrams.add(`${letters[0]}${letters[1]}${letters[2]}`);
+            anagrams.add(`${letters[0]}${letters[2]}${letters[1]}`);
+            anagrams.add(`${letters[1]}${letters[0]}${letters[2]}`);
+            anagrams.add(`${letters[1]}${letters[2]}${letters[0]}`);
+            anagrams.add(`${letters[2]}${letters[1]}${letters[0]}`);
+            anagrams.add(`${letters[2]}${letters[0]}${letters[1]}`);
+        }
+
         return Array.from(anagrams);
     }
 }

@@ -37,4 +37,16 @@ describe("Anagrams", () => {
 
         expect(result.getAll()).toEqual(["ab", "ba"])
     });
+
+    it("should return three anagrams for 'zbb' input", () => {
+        const result = new Anagrams("zbb");
+
+        expect(result.getAll()).toEqual(["zbb", "bzb", "bbz"])
+    });
+
+    it("should return 6 anagrams for 'abc' input", () => {
+        const result = new Anagrams("abc");
+
+        expect(result.getAll()).toEqual(["abc", "acb", "bac", "bca", "cba", "cab"])
+    });
 });
