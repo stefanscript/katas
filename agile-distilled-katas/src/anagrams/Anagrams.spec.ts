@@ -25,4 +25,10 @@ describe("Anagrams", () => {
 
         expect(result.getAll()).toEqual(["c"])
     });
+
+    it("should return one anagrams for 'aa' input", () => {
+        const result = new Anagrams("aa");
+
+        expect(result.getAll()).toEqual(["aa"])
+    });
 });
