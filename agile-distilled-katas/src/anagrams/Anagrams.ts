@@ -6,13 +6,7 @@ class Anagrams {
     }
 
     getAll() {
-        if (this.input === "a") {
-            return ["a"];
-        }
-        if (this.input === "b") {
-            return ["b"];
-        }
-        return [""];
+        return this.input.split("");
     }
 }
 

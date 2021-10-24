@@ -5,7 +5,7 @@ describe("Anagrams", () => {
     it("should deal with empty string", () => {
         const result = new Anagrams("");
 
-        expect(result.getAll()).toEqual([""])
+        expect(result.getAll()).toEqual([])
     });
 
     it("should return one anagram for 'a' input", () => {
@@ -18,5 +18,11 @@ describe("Anagrams", () => {
         const result = new Anagrams("b");
 
         expect(result.getAll()).toEqual(["b"])
+    });
+
+    it("should return one anagram for 'c' input", () => {
+        const result = new Anagrams("c");
+
+        expect(result.getAll()).toEqual(["c"])
     });
 });
