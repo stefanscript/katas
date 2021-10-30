@@ -1,22 +1,4 @@
-const numbersToRomanMap: Record<string, number> = {
-    "IX": 9,
-    "V": 5,
-    "IV": 4,
-    "I": 1
-};
-
-function toRoman(number: number) {
-    let roman = "";
-    let remainder = number;
-
-    for (const r in numbersToRomanMap) {
-        while (remainder >= numbersToRomanMap[r]) {
-            roman += r;
-            remainder -= numbersToRomanMap[r];
-        }
-    }
-    return roman;
-}
+import {toRoman} from "./romanNumerals";
 
 describe("Roman numerals", () => {
     it("returns I for 1", () => {
@@ -38,6 +20,6 @@ describe("Roman numerals", () => {
         expect(toRoman(6)).toEqual("VI");
     });
     it("returns IX for 9", () => {
-        // expect(toRoman(9)).toEqual("IX");
+        expect(toRoman(9)).toEqual("IX");
     });
 });
