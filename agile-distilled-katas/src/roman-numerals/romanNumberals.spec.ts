@@ -1,11 +1,19 @@
 function toRoman(number: number) {
-    if(number === 5) {
-        return "V";
+    let roman = "";
+    let remainder = number;
+
+    if(remainder >= 5) {
+        roman += "V";
+        remainder -= 5;
     }
-    if(number === 4) {
-        return "IV";
+    if(remainder >= 4) {
+        roman += "IV";
+        remainder -= 4;
     }
-    return "I".repeat(number);
+    if(remainder > 0){
+        roman += "I".repeat(remainder);
+    }
+    return roman;
 }
 
 describe("Roman numerals", () => {
@@ -23,5 +31,8 @@ describe("Roman numerals", () => {
     });
     it("returns V for 5", () => {
         expect(toRoman(5)).toEqual("V");
+    });
+    it("returns VI for 6", () => {
+        expect(toRoman(6)).toEqual("VI");
     });
 });
