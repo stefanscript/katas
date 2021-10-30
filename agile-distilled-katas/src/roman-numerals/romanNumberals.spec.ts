@@ -2,6 +2,10 @@ function toRoman(number: number) {
     let roman = "";
     let remainder = number;
 
+    if(remainder >= 9) {
+        roman += "IX";
+        remainder -= 9;
+    }
     if(remainder >= 5) {
         roman += "V";
         remainder -= 5;
@@ -34,5 +38,8 @@ describe("Roman numerals", () => {
     });
     it("returns VI for 6", () => {
         expect(toRoman(6)).toEqual("VI");
+    });
+    it("returns IX for 9", () => {
+        expect(toRoman(9)).toEqual("IX");
     });
 });
