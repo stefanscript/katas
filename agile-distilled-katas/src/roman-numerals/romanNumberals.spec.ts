@@ -1,4 +1,7 @@
 function toRoman(number: number) {
+    if(number === 5) {
+        return "V";
+    }
     if(number === 4) {
         return "IV";
     }
@@ -17,5 +20,8 @@ describe("Roman numerals", () => {
     });
     it("returns IV for 4", () => {
         expect(toRoman(4)).toEqual("IV");
+    });
+    it("returns V for 5", () => {
+        expect(toRoman(5)).toEqual("V");
     });
 });
